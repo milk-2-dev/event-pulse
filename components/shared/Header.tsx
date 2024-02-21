@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { SignedOut, SignedIn, UserButton } from '@clerk/nextjs';
 
 import { Button } from '@/components/ui/button';
+import NavItems from '@/components/shared/NavItems';
+import MobileNav from '@/components/shared/MobileNav';
 
 
 const Header = () => {
@@ -17,9 +19,16 @@ const Header = () => {
           />
         </Link>
 
+        <SignedIn>
+          <nav className="md:flex-between hidden w-full max-w-xs">
+            <NavItems/>
+          </nav>
+        </SignedIn>
+
         <div className="flex w-32 justify-end gap-3">
           <SignedIn>
             <UserButton afterSignOutUrl="/"/>
+            <MobileNav/>
           </SignedIn>
           <SignedOut>
             <Button asChild className="rounded-full" size="lg">
