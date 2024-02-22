@@ -11,6 +11,7 @@ const Footer = () => {
         <Link href="/">
           <Image
             src="/assets/images/logo.svg"
+            alt="Logo"
             width={128}
             height={38}
           />
