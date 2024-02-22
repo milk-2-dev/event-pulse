@@ -1,4 +1,4 @@
-import { Schema, models, model } from 'mongoose';
+import { Document, Schema, models, model } from 'mongoose';
 
 
 export interface IEvent extends Document {
