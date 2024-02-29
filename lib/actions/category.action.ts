@@ -1,10 +1,10 @@
 "use server"
 
-import { CreateCategoryParams } from '@/types';
+import { connectToDatabase } from '@/lib/database';
 
 import { handleError } from '@/lib/utils';
 
-import { connectToDatabase } from '@/lib/database';
+import { CreateCategoryParams } from '@/types';
 
 import Category from '@/lib/database/models/category.model';
 
