@@ -26,7 +26,7 @@ import Dropdown from '@/components/shared/Dropdown';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { FileUploader } from '@/components/shared/FileUploader';
-import { createEvent } from '@/lib/actions/event.action';
+import { createEvent } from '@/lib/actions/event.actions';
 
 
 type EventFormProps = {
