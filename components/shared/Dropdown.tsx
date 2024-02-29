@@ -51,7 +51,7 @@ const Dropdown = ({value, onChangeHandler}: DropdownProps) => {
   }, []);
 
   return (
-    <Select onValueChange={onChangeHandler} defaultValue={value}>
+    <Select onValueChange={onChangeHandler} defaultValue={value} value={value}>
       <SelectTrigger className="select-field w-[180px]">
         <SelectValue placeholder="Category"/>
       </SelectTrigger>
