@@ -2,7 +2,7 @@
 import { withUt } from 'uploadthing/tw';
 
 module.exports = withUt({
-  darkMode: ['class'],
+  darkMode: [ 'class' ],
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
@@ -67,11 +67,11 @@ module.exports = withUt({
         },
       },
       fontFamily: {
-        poppins: ['var(--font-poppins)'],
+        poppins: [ 'var(--font-poppins)' ],
       },
       backgroundImage: {
-        'dotted-pattern': "url('/assets/images/dotted-pattern.png')",
-        'hero-img': "url('/assets/images/hero.png')",
+        'dotted-pattern': 'url(\'/assets/images/dotted-pattern.png\')',
+        'hero-img': 'url(\'/assets/images/hero.png\')',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -80,12 +80,12 @@ module.exports = withUt({
       },
       keyframes: {
         'accordion-down': {
-          from: { height: '0' },
-          to: { height: 'var(--radix-accordion-content-height)' },
+          from: {height: '0'},
+          to: {height: 'var(--radix-accordion-content-height)'},
         },
         'accordion-up': {
-          from: { height: 'var(--radix-accordion-content-height)' },
-          to: { height: '0' },
+          from: {height: 'var(--radix-accordion-content-height)'},
+          to: {height: '0'},
         },
       },
       animation: {
@@ -94,5 +94,5 @@ module.exports = withUt({
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [ require('tailwindcss-animate') ],
 });
