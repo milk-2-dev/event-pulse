@@ -1,18 +1,27 @@
 import Link from 'next/link';
 import { auth } from '@clerk/nextjs';
 
+import { SearchParamProps } from '@/types';
+
 import { getEventsByUser } from '@/lib/actions/event.actions';
+import { getOrdersByUser } from '@/lib/actions/order.actions';
 
 import { Button } from '@/components/ui/button';
 import Collection from '@/components/shared/Collection';
+import { IOrder } from '@/lib/database/models/order.model';
 
 
-
-const Profile = async () => {
+const ProfilePage = async ({searchParams}: SearchParamProps) => {
   const {sessionClaims} = auth();
   const userId = sessionClaims?.userId as string;
 
-  const organizedEvents = await getEventsByUser({userId, page: 1});
+  const ordersPage = Number(searchParams?.ordersPage) || 1;
+  const eventsPage = Number(searchParams?.eventsPage) || 1;
+
+  const orders = await getOrdersByUser({userId, page: ordersPage});
+
+  const orderedEvents = orders?.data.map((order: IOrder) => order.event) || [];
+  const organizedEvents = await getEventsByUser({userId, page: eventsPage});
 
   return (
     <>
@@ -29,16 +38,16 @@ const Profile = async () => {
       </section>
 
       <section className="wrapper my-8">
-        {/*<Collection*/}
-        {/*  data={orderedEvents}*/}
-        {/*  emptyTitle="No event tickets purchased yet"*/}
-        {/*  emptyStateSubtext="No worries - plenty of exciting events to explore!"*/}
-        {/*  collectionType="My_Tickets"*/}
-        {/*  limit={3}*/}
-        {/*  page={ordersPage}*/}
-        {/*  urlParamName="ordersPage"*/}
-        {/*  totalPages={orders?.totalPages}*/}
-        {/*/>*/}
+        <Collection
+          data={orderedEvents}
+          emptyTitle="No event tickets purchased yet"
+          emptyStateSubtext="No worries - plenty of exciting events to explore!"
+          collectionType="My_Tickets"
+          limit={3}
+          page={ordersPage}
+          urlParamName="ordersPage"
+          totalPages={orders?.totalPages}
+        />
       </section>
 
       {/* Events Organized */}
@@ -60,7 +69,7 @@ const Profile = async () => {
           emptyStateSubtext="Go create some now"
           collectionType="Events_Organized"
           limit={3}
-          page={1}
+          page={eventsPage}
           urlParamName="eventsPage"
           totalPages={organizedEvents?.totalPages}
         />
@@ -69,4 +78,4 @@ const Profile = async () => {
   );
 };
 
-export default Profile;
+export default ProfilePage;
