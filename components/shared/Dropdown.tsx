@@ -2,7 +2,7 @@ import { startTransition, useEffect, useState } from 'react';
 
 import { ICategory } from '@/lib/database/models/category.model';
 
-import { createCategory, getAllCategories } from '@/lib/actions/category.action';
+import { createCategory, getAllCategories } from '@/lib/actions/category.actions';
 
 import {
   Select,

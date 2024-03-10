@@ -8,6 +8,7 @@ import { SearchParamProps } from '@/types';
 import Collection from '@/components/shared/Collection';
 import { Button } from '@/components/ui/button';
 import Search from '@/components/shared/Search';
+import CategoryFilter from '@/components/shared/categoryFilter';
 
 
 export default async function Home({ searchParams }: SearchParamProps) {
@@ -55,7 +56,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
         <div className="flex w-full flex-col gap-5 md:flex-row">
 
           <Search />
-          {/*<CategoryFilter />*/}
+          <CategoryFilter />
 
         </div>
 
@@ -65,7 +66,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
           emptyStateSubtext="Come back later"
           collectionType="All_Events"
           limit={6}
-          page={1}
+          page={page}
           totalPages={events?.totalPages}
         />
       </section>
